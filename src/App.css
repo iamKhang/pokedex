@@ -17,3 +17,125 @@ body {
   background-color: #3d405b;
 }
 
+.header-title{
+  font-size: 2rem;
+  color: #f4f1de;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.btn{
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  /* margin: 0.5rem; */
+  border: none;
+  border-radius: 5px;
+  background-color: #f4f1de;
+  color: #3d405b;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.fire{
+  background-color: #C40C0C;
+}
+.water{
+  background-color: #0E46A3;
+}
+.grass{
+  background-color: #0E8A16;
+}
+.electric{
+  background-color: #F3CA52;
+}
+.ice{
+  background-color: #0ED8E3;
+}
+.fighting{
+  background-color: #A30C0C;
+}
+.poison{
+  background-color: #8A0E8A;
+}
+.ground{
+  background-color: #8A6A0E;
+}
+.bug{
+  background-color: #8A8A0E;
+}
+.normal{
+  background-color: #8A8A8A;
+}
+.flying{
+  background-color: #8A0E8A;
+}
+.fairy{
+  background-color: #F78AFC;
+}
+.psychic{
+  background-color: #F78A8A;
+}
+.rock{
+  background-color: #8A6A0E;
+}
+.ghost{
+  background-color: #8A0E8A;
+}
+.dragon{
+  background-color: #0E8A8A;
+}
+
+.drop-shadow{
+  filter: drop-shadow(4px 4px 1px rgba(0, 0, 0, 0.3));
+}
+
+.pokemon-cart:hover .pokemon-image-container{ 
+  transform: translateY(-4px);
+  transition: transform 0.5s;
+}
+
+
+.pokemon-cart:hover .drop-shadow{
+  filter: drop-shadow(-6px -6px 0px rgba(0, 0, 0, 0.3));
+  transition: transform 0.5s;
+}
+
+.pokemon-cart:hover .card-body{
+  background-color: #77B0AA;;
+}
+
+.card-stats{
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10000px);
+  border-radius: 0 0 5px 5px;
+  bottom: -12px;
+  position: absolute;
+  color: white;
+} 
+
+.card-body{
+  position: relative;
+}
+
+.pokemon-cart:hover .card-stats{
+  display: flex;
+  transition: display 0.5s;
+  z-index: 1;
+  animation: flip 0.4s linear;
+} 
+
+/* Tao animation */
+@keyframes flip {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(180deg);
+  }
+}

@@ -17,27 +17,3 @@ body {
   background-color: #3d405b;
 }
 
-.container {
-  margin: 1rem 2rem;
-  height: 100vh;
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-}
-.container-overlay {
-  margin: 0rem;
-  background-color: black;
-  height: 100vh;
-  overflow-y:hidden;
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.pokemon-header {
-  text-align: center;
-  font-size: 2.5rem;
-  letter-spacing: 0.25rem;
-  font-weight: 600;
-  color: #81b29a;
-}

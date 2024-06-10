@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Pokedex from "pokedex-promise-v2";
+import attackIcon from "../resources/icons/stats/attack.png";
+import hpIcon from "../resources/icons/stats/hp.png";
+import defenseIcon from "../resources/icons/stats/defense.png";
+import specialAttackIcon from "../resources/icons/stats/special-attack.png";
+import specialDefenseIcon from "../resources/icons/stats/special-defense.png";
+import speedIcon from "../resources/icons/stats/speed.png";
 
 const P = new Pokedex();
 
@@ -29,7 +35,7 @@ const PokemonCollection = () => {
 
   useEffect(() => {
     const fetchPokemons = async () => {
-      const response = await P.getPokemonsList({ limit: 10, offset: 0 });
+      const response = await P.getPokemonsList({ limit: 24, offset: 0 });
       const listPokemon: ListPokemon[] = response.results;
       const pokemonData = await Promise.all(
         listPokemon.map(async (pokemon) => {
@@ -63,7 +69,7 @@ const PokemonCollection = () => {
   const loadMore = async () => {
     setIsLoading(true);
     const response = await P.getPokemonsList({
-      limit: 10,
+      limit: 18,
       offset: pokemons.length,
     });
 
@@ -93,6 +99,25 @@ const PokemonCollection = () => {
     setIsLoading(false);
   };
 
+  function getIconStat(statName: string) {
+    switch (statName) {
+      case "hp":
+        return hpIcon;
+      case "attack":
+        return attackIcon;
+      case "defense":
+        return defenseIcon;
+      case "special-attack":
+        return specialAttackIcon;
+      case "special-defense":
+        return specialDefenseIcon;
+      case "speed":
+        return speedIcon;
+      default:
+        return; // return a default icon in case statName doesn't match any case
+    }
+  }
+
   return (
     <div>
       {/* Search */}
@@ -115,13 +140,13 @@ const PokemonCollection = () => {
           <div className="col-md-2 pokemon-cart" key={pokemon.id}>
             <div className="card mb-4 card-body">
               <div className="row d-flex justify-content-center">
-                <div className="col-6 d-flex justify-content-center">
+                <div className="col-12 d-flex justify-content-center">
                   <div className="pokemon-image-container">
                     {pokemon.imageDefault && (
                       <img
                         src={pokemon.imageDefault}
                         alt={pokemon.name}
-                        className="img-fluid w-100 pokemon-image-default drop-shadow"
+                        className="img-fluid w-200 pokemon-image-default drop-shadow"
                       />
                     )}
                   </div>
@@ -141,14 +166,23 @@ const PokemonCollection = () => {
                 ))}
               </div>
 
-              <div className="card-stats">
-                <div className="row">
-                  {pokemon.stats.map((stat, index) => (
-                    <div className="col-4" key={index}>
-                      {stat.name} : {stat.stat_base}
-                    </div>
-                  ))}
+              <div className="row card-stats no-gutters p-2">
+                <div className="col-12 bg-dark text-white text-center mb-1 stat-title">
+                  Chỉ số
                 </div>
+                {pokemon.stats.map((stat, index) => (
+                  <div
+                    className="col-4 p-0 d-flex align-items-center"
+                    key={index}
+                  >
+                    <img
+                      src={getIconStat(stat.name)}
+                      alt={stat.name}
+                      className="img-fluid icon-small"
+                    />
+                    {stat.stat_base}
+                  </div>
+                ))}
               </div>
             </div>
           </div>
